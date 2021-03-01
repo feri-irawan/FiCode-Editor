@@ -1,1 +1,49 @@
-Halo
+<!DOCTYPE html>
+<html>
+<head>
+ <title>maribelajarcoding.com</title>
+ <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+ <script type="text/javascript">
+  $(document).ready(function() { 
+      $("#contact-me").submit(function(e) {
+          e.preventDefault();
+          $.ajax({
+              url: 'http://contohku.epizy.com/mail.php',
+              type: 'get',
+              data: $(this).serialize(),             
+              success: function(data) {               
+              document.getElementById("contact-me").reset();
+              $('#status').html(data);              
+              }
+          });
+      });
+  })
+ </script>
+</head>
+<body>
+<form id="contact-me" method="get">
+ <table>
+  <tr>
+   <td>Nama</td>
+   <td><input type="text" name="nama" id="nama"></td>
+  </tr>
+  <tr>
+   <td>email</td>
+   <td><input type="text" name="email" id="email"></td>
+  </tr>
+  <tr>
+   <td>Pesan</td>
+   <td><textarea name="isi" id="isi"></textarea></td>
+  </tr>
+  <tr>
+   <td></td>
+   <td>
+    <input type="submit" name="btnSubmit" id="simpan" value="Simpan">
+   </td>
+  </tr>
+ </table>
+</form>
+<div id="status"></div>
+</body>
+
+</html>
