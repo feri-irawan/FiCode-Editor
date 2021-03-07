@@ -1,49 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
- <title>maribelajarcoding.com</title>
- <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
- <script type="text/javascript">
-  $(document).ready(function() { 
-      $("#contact-me").submit(function(e) {
-          e.preventDefault();
-          $.ajax({
-              url: 'http://contohku.epizy.com/mail.php',
-              type: 'get',
-              data: $(this).serialize(),             
-              success: function(data) {               
-              document.getElementById("contact-me").reset();
-              $('#status').html(data);              
-              }
-          });
-      });
-  })
- </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  
+  <link rel="stylesheet" href="https://cdn.statically.io/gh/feri-irawan/Flix/main/dist/flix.css" type="text/css" media="all" />
 </head>
 <body>
-<form id="contact-me" method="get">
- <table>
-  <tr>
-   <td>Nama</td>
-   <td><input type="text" name="nama" id="nama"></td>
-  </tr>
-  <tr>
-   <td>email</td>
-   <td><input type="text" name="email" id="email"></td>
-  </tr>
-  <tr>
-   <td>Pesan</td>
-   <td><textarea name="isi" id="isi"></textarea></td>
-  </tr>
-  <tr>
-   <td></td>
-   <td>
-    <input type="submit" name="btnSubmit" id="simpan" value="Simpan">
-   </td>
-  </tr>
- </table>
-</form>
-<div id="status"></div>
+  
+  <div class="bg-orange p-20 ff-serif">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste labore deleniti architecto eos. Repellendus suscipit ducimus vel consequatur praesentium quibusdam id, magnam, aut. Voluptates suscipit ratione fugiat cum animi provident!
+  </div>
+  
+  
 </body>
-
 </html>
