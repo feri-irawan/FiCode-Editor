@@ -1,5 +1,5 @@
 <?php
-$host = "https://databases.000webhost.com/";
+$host = "databases.000webhost.com";
 $uname = "id15353728_root2";
 $pass = "@Qazxcvbn123";
 $dbname = "id15353728_login";
