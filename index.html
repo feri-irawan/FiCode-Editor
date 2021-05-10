@@ -132,7 +132,8 @@ compile();
 
 function Editor(idEditor, idTheme, lang) {
   var container = document.getElementById(idEditor);
-  var inputTheme = $("#" + idTheme);
+  var inputTheme = $("#" + idTheme),
+      btnWrap = $("#btn-wrap");
   
   if(lang == "html") {
     var mixedMode = {
@@ -156,7 +157,17 @@ function Editor(idEditor, idTheme, lang) {
       matchBrackets: true,
       mode: lang,
       theme: inputTheme.val(),
-      extraKeys: {"Ctrl-Q": function(cm){ cm.foldCode(cm.getCursor()); }},
+      extraKeys: {
+        "Ctrl-Q": function(cm){
+          cm.foldCode(cm.getCursor());
+        },
+        "Ctrl-Enter": function (cm) {
+          cm.setOption("lineWrapping", true);
+        },
+        "Ctrl-Alt-Enter": function (cm) {
+          cm.setOption("lineWrapping", false)
+        }
+      },
       foldGutter: true,
       gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
     });
@@ -166,7 +177,7 @@ function Editor(idEditor, idTheme, lang) {
     console.log(inputTheme.val());
   });
   
-  $("#btn-wrap").click(function () {
+  btnWrap.click(function () {
     if ($(this).prop("checked")) {
       editor.setOption("lineWrapping", true);
     } else {
