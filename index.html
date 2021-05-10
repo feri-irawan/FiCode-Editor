@@ -1,45 +1,12 @@
-<style>
-  html, body, #container {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-}
-</style>
-<h5>Code Editor</h5>
-<div id="container"></div>
-
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-<script>
-require.config({ paths: { 'vs': 'https://unpkg.com/monaco-editor@0.8.3/min/vs' }});
-
-window.MonacoEnvironment = { getWorkerUrl: () => proxy };
-
-let proxy = URL.createObjectURL(new Blob([`
-	self.MonacoEnvironment = {
-		baseUrl: 'https://unpkg.com/monaco-editor@0.8.3/min/'
-	};
-	importScripts('https://unpkg.com/monaco-editor@0.8.3/min/vs/base/worker/workerMain.js');
-`], { type: 'text/javascript' }));
-
-require(["vs/editor/editor.main"], function () {
-	let editor = monaco.editor.create(document.getElementById('container'), {
-		value: [
-			'function x() {',
-			'\tconsole.log("Hello world!");',
-			'}'
-		].join('\n'),
-		language: 'javascript',
-		theme: 'vs-light' 
-	});
-	
-	editor.addListener('didType', () => {
-		console.log(editor.getValue());
-	});
-  
-});
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h5>Hello World!</h5>
+</body>
+</html>
