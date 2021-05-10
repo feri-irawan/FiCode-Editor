@@ -94,6 +94,16 @@ button.active {
         <option value="dracula" selected>Dracula</option>
         <option value="monokai">Monokai</option>
       </select>
+       
+      <input type="radio" class="btn-check" name="btnradio" id="btnradio1" onclick="resultView('1.0')" autocomplete="off" checked>
+      <label class="btn btn-outline-primary" for="btnradio1">1x</label>
+    
+      <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+      <label class="btn btn-outline-primary" for="btnradio2">2x</label>
+    
+      <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+      <label class="btn btn-outline-primary" for="btnradio3">3x</label>
+    
       <button type="submit" class="btn btn-primary">Save</button>
     </div>
 
@@ -141,9 +151,7 @@ function Editor(idEditor, idTheme, lang) {
       theme: inputTheme.value
     });
     
-    //editor.setSize(100, 100);
-    
-    
+  
   inputTheme.addEventListener("change", function () {
     editor.setOption("theme", inputTheme.value);
     console.log(inputTheme.value);
@@ -157,11 +165,18 @@ function compile() {
   var js = document.getElementById("js");
   var code = document.getElementById("result").contentWindow.document;
 
+  
+  function resultView(size) {
+    var view = size;
+    console.log(size);
+  }
+  
   $("#form-code").bind("submit", function (e) {
     
     code.open();
     code.writeln(
-      html.value +
+        `<meta name="viewport" content="width=device-width, initial-scale=`+view+`">` +
+        html.value +
         "<style>" +
         css.value +
         "</style>" +
