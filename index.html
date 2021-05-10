@@ -5,75 +5,85 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/codemirror.min.css" type="text/css" media="all" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/theme/dracula.min.css" type="text/css" media="all" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/theme/monokai.min.css" type="text/css" media="all" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/theme/neat.min.css" type="text/css" media="all" />
 
+<!-- MODE -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/codemirror.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/mode/html/html.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/mode/htmlmixed/htmlmixed.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/mode/xml/xml.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/mode/css/css.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/mode/javascript/javascript.min.js"></script>
 
+<!-- CSS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/addon/selection/active-line.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/addon/edit/matchbrackets.min.js"></script>
 
 </head>
 <body>
  
- <h2>Theme Demo</h2>
-<form><textarea id="code" name="code">
-function findSequence(goal) {
-  function find(start, history) {
-    if (start == goal)
-      return history;
-    else if (start > goal)
-      return null;
-    else
-      return find(start + 5, "(" + history + " + 5)") ||
-             find(start * 3, "(" + history + " * 3)");
-  }
-  return find(1, "1");
-}</textarea></form>
-<p>Select a theme: <select onchange="selectTheme()" id=select>
-    <option>default</option>
-    <option selected>dracula</option>
-    <option>monokai</option>
-    <option>neat</option>
-</select>
-</p>
+<section class="container">
+<h2>Theme Demo</h2>
+
+  <form>
+    <h5>HTML</h5>
+    <textarea id="html" name="html" class="form-control"></textarea>
+    <h5>CSS</h5>
+    <textarea id="css" name="css" class="form-control"></textarea>
+    <h5>JS</h5>
+    <textarea id="js" name="js" class="form-control"></textarea>
+  
+    <select id="theme" class="mt-3 form-select">
+        <option value="default">Default</option>
+        <option value="dracula" selected>Dracula</option>
+        <option value="monokai">Monokai</option>
+        <option value="neat">Neat</option>
+    </select>
+    <button type="submit" class="mt-3 btn btn-primary">Save</button>
+  </form>
+  
+</section>
 
  
-
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
-var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-    lineNumbers: true,
-    styleActiveLine: true,
-    matchBrackets: true,
-    autoCloseTags: true,
-    mode: "css"
-  });
+Editor("html", "theme", "html");
+Editor("css", "theme", "css");
+Editor("js", "theme", "javascript");
+
+function Editor(idEditor, idTheme, lang) {
+  var container = document.getElementById(idEditor);
+  var inputTheme = document.getElementById(idTheme);
   
-  
-  var input = document.getElementById("select");
-  
-  function selectTheme() {
-    var theme = input.options[input.selectedIndex].textContent;
-    editor.setOption("theme", theme);
-    location.hash = "#" + theme;
+  if(lang == "html") {
+    var mixedMode = {
+        name: "htmlmixed",
+        scriptTypes: [{matches: /\/x-handlebars-template|\/x-mustache/i,
+                       mode: null},
+                      {matches: /(text|application)\/(x-)?vb(a|script)/i,
+                       mode: "vbscript"}]
+      };
+    lang = mixedMode;
   }
   
-  var choice = (location.hash && location.hash.slice(1)) ||
-               (document.location.search &&
-                decodeURIComponent(document.location.search.slice(1)));
-  if (choice) {
-    input.value = choice;
-    editor.setOption("theme", choice);
-  }
-  CodeMirror.on(window, "hashchange", function() {
-    var theme = location.hash.slice(1);
-    if (theme) { input.value = theme; selectTheme(); }
+  var editor = CodeMirror.fromTextArea(container, {
+      lineNumbers: true,
+      styleActiveLine: true,
+      matchBrackets: true,
+      mode: lang,
+      theme: inputTheme.value
+    });
+    
+  inputTheme.addEventListener("change", function () {
+    editor.setOption("theme", inputTheme.value);
+    console.log(inputTheme.value);
   });
+  
+}
 </script> 
 </body>
 </html>
