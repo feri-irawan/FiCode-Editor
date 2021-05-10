@@ -94,16 +94,11 @@ button.active {
         <option value="dracula" selected>Dracula</option>
         <option value="monokai">Monokai</option>
       </select>
-       
-      <input value="1.0" type="radio" class="btn-check" name="viewport" id="btnradio1" autocomplete="off" checked>
-      <label class="btn btn-outline-primary" for="btnradio1">1x</label>
-    
-      <input value="0.5" type="radio" class="btn-check" name="viewport" id="btnradio2" autocomplete="off">
-      <label class="btn btn-outline-primary" for="btnradio2">2x</label>
-    
-      <input value="0.33" type="radio" class="btn-check" name="viewport" id="btnradio3" autocomplete="off">
-      <label class="btn btn-outline-primary" for="btnradio3">3x</label>
-    
+      <select name="viewport" id="viewport" class="form-select">
+        <option value="1.0">1.0x</option>
+        <option value="0.5">0.5x</option>
+        <option value="0.25">0.25x</option>
+      </select>
       <button type="submit" class="btn btn-primary">Save</button>
     </div>
   </form>
@@ -165,9 +160,11 @@ function compile() {
   
     code.open();
     code.writeln(
-       `<meta name="viewport" content="width=device-width, initial-scale=`+ viewport +`">` +
         html.value +
-        "<style>" +
+        `<style>
+          :root {
+            font-size: `+viewport+`em;
+          }` +
         css.value +
         "</style>" +
         "<script>" +
