@@ -95,18 +95,17 @@ button.active {
         <option value="monokai">Monokai</option>
       </select>
        
-      <input value="1.0" type="radio" class="btn-check" name="btnradio" autocomplete="off" checked>
+      <input value="1.0" type="radio" class="btn-check" name="viewport" id="btnradio1" autocomplete="off" checked>
       <label class="btn btn-outline-primary" for="btnradio1">1x</label>
     
-      <input value="0.5" type="radio" class="btn-check" name="btnradio" autocomplete="off">
+      <input value="0.5" type="radio" class="btn-check" name="viewport" id="btnradio2" autocomplete="off">
       <label class="btn btn-outline-primary" for="btnradio2">2x</label>
     
-      <input value="0.33" type="radio" class="btn-check" name="btnradio" autocomplete="off">
+      <input value="0.33" type="radio" class="btn-check" name="viewport" id="btnradio3" autocomplete="off">
       <label class="btn btn-outline-primary" for="btnradio3">3x</label>
     
       <button type="submit" class="btn btn-primary">Save</button>
     </div>
-      
   </form>
   
   <iframe class="shadow w-100 rounded mt-3" id="result"></iframe>
@@ -148,12 +147,10 @@ function Editor(idEditor, idTheme, lang) {
       theme: inputTheme.value
     });
     
-  
   inputTheme.addEventListener("change", function () {
     editor.setOption("theme", inputTheme.value);
     console.log(inputTheme.value);
   });
-  
 }
 
 function compile() {
@@ -161,17 +158,14 @@ function compile() {
   var css = document.getElementById("css");
   var js = document.getElementById("js");
   var code = document.getElementById("result").contentWindow.document;
-
-  $("[name=btnradio]").click(function () {
-    var view = $(this).val();
-    console.log(view);
-  });
   
   $("#form-code").bind("submit", function (e) {
-    
+    var viewport = e.target.viewport.value;
+    console.log(viewport);
+  
     code.open();
     code.writeln(
-        `<meta name="viewport" content="width=device-width, initial-scale=`+view+`">` +
+       `<meta name="viewport" content="width=device-width, initial-scale=`+ viewport +`">` +
         html.value +
         "<style>" +
         css.value +
@@ -186,7 +180,7 @@ function compile() {
   })
 }
 
-$("button").data("bs-toggle", "tab").click(function () {
+$(".nav-tabs button").data("bs-toggle", "tab").click(function () {
   let target = $(this).data("bs-target");
   $(".tab-content .tab-pane").addClass("hide");
   $(target).removeClass("hide");
