@@ -95,13 +95,13 @@ button.active {
         <option value="monokai">Monokai</option>
       </select>
        
-      <input type="radio" class="btn-check" name="btnradio" id="btnradio1" onclick="resultView('1.0')" autocomplete="off" checked>
+      <input value="1.0" type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
       <label class="btn btn-outline-primary" for="btnradio1">1x</label>
     
-      <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+      <input value="0.5" type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
       <label class="btn btn-outline-primary" for="btnradio2">2x</label>
     
-      <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+      <input value="0.33" type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
       <label class="btn btn-outline-primary" for="btnradio3">3x</label>
     
       <button type="submit" class="btn btn-primary">Save</button>
@@ -165,11 +165,10 @@ function compile() {
   var js = document.getElementById("js");
   var code = document.getElementById("result").contentWindow.document;
 
-  
-  function resultView(size) {
-    var view = size;
-    console.log(size);
-  }
+  $("[name=btnradio]").click(function () {
+    var view = $(this).val();
+    console.log(view);
+  });
   
   $("#form-code").bind("submit", function (e) {
     
