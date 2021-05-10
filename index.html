@@ -137,7 +137,7 @@ function Editor(idEditor, idTheme, lang) {
           }]
       };
     lang = mixedMode;
-  }
+  };
   
   var editor = CodeMirror.fromTextArea(container, {
       lineNumbers: true,
@@ -182,15 +182,15 @@ function compile() {
     );
     code.close();
     
-    e.preventDefault()
-  })
+    e.preventDefault();
+  });
 }
 
 $("button").data("bs-toggle", "tab").click(function () {
   let target = $(this).data("bs-target");
   $(".tab-content .tab-pane").addClass("hide");
   $(target).removeClass("hide");
-})
+});
 </script> 
 </body>
 </html>
