@@ -59,15 +59,32 @@ button.active {
 .nav-tabs button {
   border: none !important;
 }
+.nav-tabs button:first-child,
+.nav-tabs button:last-child {
+  border: 1px solid var(--bs-dark) !important;
+}
+
+.nav-tabs button:first-child {
+  border-radius: 4px 0 0 0 !important;
+}
+.nav-tabs button {
+  /* ini untuk tombol tab yang ke-2 dari awal dan akhir */
+  border-radius: 0px !important;
+  border-top: 1px solid var(--bs-dark) !important;
+}
+.nav-tabs button:last-child {
+  border-radius: 0 4px 0 0 !important;
+}
 .tab-pane {
   overflow: hidden;
-  border-radius: 4px;
-}
-.tab-pane:first-child {
   border-radius: 0px 4px 4px 4px;
 }
 .tab-content .hide {
   height: 0;
+}
+.form-select:hover {
+  border-color: #51585e;
+  box-shadow: 0 0 0 0.25rem rgba(130, 138, 145, 0.5);
 }
 </style>
 </head>
@@ -80,9 +97,9 @@ button.active {
     <!-- Code Box -->
     <nav>
       <div class="nav nav-tabs">
-        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#html-box" type="button">HTML</button>
-        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#css-box" type="button">CSS</button>
-        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#js-box" type="button">JavaScript</button>
+        <button class="btn-outline-secondary nav-link active" data-bs-toggle="tab" data-bs-target="#html-box" type="button">HTML</button>
+        <button class="btn-outline-secondary nav-link" data-bs-toggle="tab" data-bs-target="#css-box" type="button">CSS</button>
+        <button class="btn-outline-secondary nav-link" data-bs-toggle="tab" data-bs-target="#js-box" type="button">JavaScript</button>
       </div>
     </nav>
     <div class="tab-content">
