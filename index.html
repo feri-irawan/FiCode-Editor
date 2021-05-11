@@ -116,7 +116,9 @@ button.active {
       </select>
       
       <input type="checkbox" class="btn-check" id="btn-wrap" autocomplete="off">
-      <label class="btn btn-outline-primary" for="btn-wrap">Wrap</label><br>
+      <label class="btn btn-outline-secondary" for="btn-wrap">
+        <svg width="18" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M3,7.2h18c0.6,0,1-0.4,1-1s-0.4-1-1-1H3c-0.6,0-1,0.4-1,1S2.4,7.2,3,7.2z M9,15.2H3c-0.6,0-1,0.4-1,1s0.4,1,1,1h6 c0.6,0,1-0.4,1-1S9.6,15.2,9,15.2z M18.5,10.2H3c-0.6,0-1,0.4-1,1s0.4,1,1,1h15.5c0.8,0,1.5,0.7,1.5,1.5s-0.7,1.5-1.5,1.5h-2.8 c0.3-0.4,0.4-0.9,0-1.3c-0.4-0.4-1-0.5-1.4-0.1l-2,1.7c0,0-0.1,0.1-0.1,0.1c-0.4,0.4-0.3,1.1,0.1,1.4l2,1.7c0.2,0.1,0.4,0.2,0.6,0.2 c0.3,0,0.6-0.1,0.8-0.4c0.3-0.4,0.3-0.9,0-1.3h2.8c1.9,0,3.5-1.6,3.5-3.5S20.4,10.2,18.5,10.2z"/></svg>
+      </label>
 
       <select name="viewport" id="viewport" class="form-select">
         <option value="1.0">1.0x</option>
@@ -124,7 +126,7 @@ button.active {
         <option value="0.25">0.25x</option>
       </select>
       
-      <button type="submit" class="btn btn-primary">Run</button>
+      <button id="btn-run" type="submit" class="btn btn-primary">Run</button>
     </div>
   </form>
   
@@ -138,7 +140,14 @@ button.active {
 Editor("html", "theme", "html");
 Editor("css", "theme", "css");
 Editor("js", "theme", "javascript");
-compile();
+
+const option = {
+  autoSave: {
+    status: true,
+    delay: 1000
+  }
+}
+compile(option);
 
 function Editor(idEditor, idTheme, lang) {
   var container = document.getElementById(idEditor);
@@ -174,9 +183,11 @@ function Editor(idEditor, idTheme, lang) {
         },
         "Ctrl-Enter": function (cm) {
           cm.setOption("lineWrapping", true);
+          btnWrap.prop("checked", true).css("color", "white");
         },
         "Ctrl-Alt-Enter": function (cm) {
-          cm.setOption("lineWrapping", false)
+          cm.setOption("lineWrapping", false);
+          btnWrap.prop("checked", false);
         }
       },
       foldGutter: true,
@@ -198,13 +209,16 @@ function Editor(idEditor, idTheme, lang) {
   
 }
 
-function compile() {
+function compile(option) {
   var html = document.getElementById("html");
   var css = document.getElementById("css");
   var js = document.getElementById("js");
   var code = document.getElementById("result").contentWindow.document;
+  setInterval(function () {
+    $("#btn-run").click()
+  }, 1000);
   
-  $("#form-code").bind("submit", function (e) {
+  $("#form-code").submit(function (e) {
     var viewport = e.target.viewport.value;
     console.log(viewport);
   
