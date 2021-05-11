@@ -137,18 +137,23 @@ button.active {
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 <script>
 
+// Menjalankan fungsi Editor untuk membuat form editor
 Editor("html", "theme", "html");
 Editor("css", "theme", "css");
 Editor("js", "theme", "javascript");
 
-const option = {
+// options
+const options = {
   autoSave: {
     status: true,
     delay: 1000
   }
-}
-compile(option);
+};
 
+// menjalankan fungsi compile
+compile(options);
+
+// Editor function
 function Editor(idEditor, idTheme, lang) {
   var container = document.getElementById(idEditor);
   var inputTheme = $("#" + idTheme),
@@ -209,15 +214,16 @@ function Editor(idEditor, idTheme, lang) {
   
 }
 
-function compile(option) {
+// Compile function
+function compile(options = null) {
   var html = document.getElementById("html");
   var css = document.getElementById("css");
   var js = document.getElementById("js");
   var code = document.getElementById("result").contentWindow.document;
-  setInterval(function () {
-    $("#btn-run").click()
-  }, 1000);
   
+  /**
+   * Melakukan compile
+   */
   $("#form-code").submit(function (e) {
     var viewport = e.target.viewport.value;
     console.log(viewport);
@@ -238,14 +244,29 @@ function compile(option) {
     code.close();
     
     e.preventDefault()
-  })
+  });
+  
+  /**
+   * Mengatur prilaku compile()
+   */
+  if (options !== null) {
+    var autoSave = options.autoSave;
+    
+    // autoSave
+    if (autoSave.status === true) {
+        setInterval(function () {
+          $("#btn-run").click()
+        }, parseInt(autoSave.delay));
+    }
+  }
 }
 
+// Toggle untuk class "hide"
 $(".nav-tabs button").data("bs-toggle", "tab").click(function () {
   let target = $(this).data("bs-target");
   $(".tab-content .tab-pane").addClass("hide");
   $(target).removeClass("hide");
-})
+});
 </script> 
 </body>
 </html>
