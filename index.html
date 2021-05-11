@@ -142,16 +142,11 @@ Editor("html", "theme", "html");
 Editor("css", "theme", "css");
 Editor("js", "theme", "javascript");
 
-// options
-const options = {
-  autoSave: {
-    status: true,
-    delay: 1000
-  }
-};
-
 // menjalankan fungsi compile
-compile(options);
+compile();
+
+// Toggle untuk class "hide"
+classHide();
 
 // Editor function
 function Editor(idEditor, idTheme, lang) {
@@ -215,7 +210,7 @@ function Editor(idEditor, idTheme, lang) {
 }
 
 // Compile function
-function compile(options = null) {
+function compile() {
   var html = document.getElementById("html");
   var css = document.getElementById("css");
   var js = document.getElementById("js");
@@ -249,24 +244,33 @@ function compile(options = null) {
   /**
    * Mengatur prilaku compile()
    */
+  const options = {
+    autoSave: {
+      status: true,
+      delay: 1000
+    }
+  };
+  
   if (options !== null) {
     var autoSave = options.autoSave;
     
     // autoSave
     if (autoSave.status === true) {
         setInterval(function () {
-          $("#btn-run").click()
+          $("#btn-run").click();
         }, parseInt(autoSave.delay));
     }
   }
 }
 
-// Toggle untuk class "hide"
-$(".nav-tabs button").data("bs-toggle", "tab").click(function () {
-  let target = $(this).data("bs-target");
-  $(".tab-content .tab-pane").addClass("hide");
-  $(target).removeClass("hide");
-});
+// ClassHide function
+function classHide() {
+  $(".nav-tabs button").data("bs-toggle", "tab").click(function () {
+    let target = $(this).data("bs-target");
+    $(".tab-content .tab-pane").addClass("hide");
+    $(target).removeClass("hide");
+  });
+}
 </script> 
 </body>
 </html>
