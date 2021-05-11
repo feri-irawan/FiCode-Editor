@@ -10,8 +10,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/codemirror.min.css" type="text/css" media="all" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/theme/dracula.min.css" type="text/css" media="all" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/theme/monokai.min.css" type="text/css" media="all" />
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/addon/fold/foldgutter.min.css" type="text/css" media="all" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/addon/lint/lint.min.css" type="text/css" media="all" />
+
 
 <!-- MODE -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/codemirror.min.js"></script>
@@ -30,6 +31,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/addon/fold/brace-fold.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/addon/fold/xml-fold.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/addon/fold/comment-fold.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/addon/lint/lint.min.js"></script>
+<!-- <script src=""></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/addon/lint/css-lint.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/addon/lint/javascript-lint.min.js"></script>
+
+<script src="https://unpkg.com/jshint@2.9.6/dist/jshint.js"></script>
+<script src="https://unpkg.com/jsonlint@1.6.3/web/jsonlint.js"></script>
+<script src="https://unpkg.com/csslint@1.0.5/dist/csslint.js"></script>
 
 
 <style>
@@ -154,6 +164,7 @@ function Editor(idEditor, idTheme, lang) {
       lineNumbers: true,
       tabSize: 2,
       styleActiveLine: true,
+      lint: true,
       matchBrackets: true,
       mode: lang,
       theme: inputTheme.val(),
@@ -169,7 +180,7 @@ function Editor(idEditor, idTheme, lang) {
         }
       },
       foldGutter: true,
-      gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
+      gutters: ["CodeMirror-lint-markers", "CodeMirror-linenumbers", "CodeMirror-foldgutter"]
     });
   
   inputTheme.on("change", function () {
