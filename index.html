@@ -93,14 +93,20 @@
   border-color: #51585e;
   box-shadow: 0 0 0 0.25rem rgba(130, 138, 145, 0.5);
 }
-
+#result {
+  height: 300px;
+}
 </style>
 </head>
 <body>
  
-<section class="container bg-primary">
+<header class="navbar navbar-dark bg-dark mb-3">
+  <div class="container">
+    <a href="#" class="navbar-brand">FICODE</a>
+  </div>
+</header>
+<section class="container">
   <main id="one">
-    <h2>Theme Demo</h2>
     <form id="form-code">
       <!-- Code Box -->
       <nav>
@@ -161,9 +167,7 @@
   </main>
   
   <main id="two">
-    <div class="card mt-3">
-      <iframe class="w-100" id="result"></iframe>
-    </div>
+    <iframe class="border mt-3 rounded shadow bg-white w-100" id="result"></iframe>
   </main>
 </section>
 
@@ -287,10 +291,9 @@ function customitation() {
     let btnResult = $(this).prop("checked");
     let result = $("#result");
     if (btnResult == true) {
-      result.toggle("fast")
+      result.toggle("fast");
     } else {
-      result.toggle("fast")
-      console.log("btn-result not checked")
+      result.toggle("fast");
     }
     
   });
