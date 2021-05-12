@@ -160,9 +160,9 @@
   
   <div class="card mt-3">
     <iframe class="w-100" id="result"></iframe>
-  <div class="card-footer" id="result-footer">
-    &lrm;
-  </div>
+    <div class="card-footer" id="result-footer">
+      &lrm;
+    </div>
   </div>
 </section>
 
@@ -309,9 +309,9 @@ function customitation() {
     let btnResult = $(this).prop("checked");
     let result = $("#result");
     if (btnResult == true) {
-      result.toggle()
+      result.toggle("fast")
     } else {
-      result.toggle()
+      result.toggle("fast")
       console.log("btn-result not checked")
     }
     
@@ -321,7 +321,7 @@ if (options.autoSave.status == true) {
   $("#result-footer").append(`<span id="autosave-status">Autosave on</span>`);
   
   setInterval(function () {
-    $("#result-footer > #autosave-status").toggle()
+    $("#result-footer > #autosave-status").toggle("fast")
   }, 1000)
   
 }
