@@ -154,11 +154,6 @@
         <option value="0.25">0.25x</option>
       </select>
       
-      <input type="checkbox" class="btn-check" id="btn-autosave" autocomplete="off">
-      <label class="btn btn-outline-secondary" for="btn-autosave">
-      Autosave
-      </label>
-      
       <button id="btn-run" type="submit" class="btn btn-primary">Run</button>
     </div>
   </form>
@@ -179,14 +174,13 @@ Editor("html", "theme", "html");
 Editor("css", "theme", "css");
 Editor("js", "theme", "javascript");
 
-var options = {
+// menjalankan fungsi compile
+const options = {
     autoSave: {
-      status: true,
+      status: false,
       delay: 1000
     }
   };
-
-// menjalankan fungsi compile
 compile(options);
 
 // Toggle untuk class "hide"
