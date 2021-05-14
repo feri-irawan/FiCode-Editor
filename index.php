@@ -2,18 +2,6 @@
 $webName = "FICODE";
 $title = "Menghitung Selisih Umur";
 ?>
-<?php
-$fullURL = $_SERVER['REQUEST_URI'];
-echo $fullURL;
-
-/*if ($fullURL == "view-source:".$fullURL) {
-  echo $fullURL;
-  echo "true";
-} else {
-  echo $fullURL;
-  echo "false";
-}*/
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
