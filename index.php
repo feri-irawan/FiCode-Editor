@@ -4,13 +4,15 @@ $title = "Menghitung Selisih Umur";
 ?>
 <?php
 $fullURL = $_SERVER['REQUEST_URI'];
-if ($fullURL == "view-source:".$fullURL) {
+echo $fullURL;
+
+/*if ($fullURL == "view-source:".$fullURL) {
   echo $fullURL;
   echo "true";
 } else {
   echo $fullURL;
   echo "false";
-}
+}*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
