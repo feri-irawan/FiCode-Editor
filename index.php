@@ -178,7 +178,7 @@ JS;
       <div class="tab-content">
         <div class="tab-pane show active" id="html-box">
           <div class="code-editor">
-            <textarea id="html" name="html" class="form-control" placeholder="Write HTML.."></textarea>
+            <textarea id="html" name="html" class="form-control" placeholder="Write HTML.." value="<?=$html?>"></textarea>
           </div>
         </div>
         <!--
@@ -190,12 +190,12 @@ JS;
         -->
         <div class="tab-pane hide active" id="css-box">
           <div class="code-editor">
-            <textarea id="css" name="css" class="form-control" placeholder="Write CSS.."></textarea>
+            <textarea id="css" name="css" class="form-control" placeholder="Write CSS.." value="<?=$css?>"></textarea>
           </div>
         </div>
         <div class="tab-pane hide active" id="js-box">
           <div class="code-editor">
-            <textarea id="js" name="js" class="form-control" placeholder="Write JavaScript.."></textarea>
+            <textarea id="js" name="js" class="form-control" placeholder="Write JavaScript.." value="<?=$js?>"></textarea>
           </div>
         </div>
       </div>
