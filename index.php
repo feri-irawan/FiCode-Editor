@@ -1,13 +1,13 @@
 <?php
 $webName = "FICODE";
-$title = "Menghitung Selisih Umur";
+$title = "Membuat Navbar";
 
-$php = <<<PHP
+$html = <<<HTML
 <nav class="header">
   <a class="btn-home" href="#">Home</a>
   <a class="brand" href="#">FERI IRAWAN</a>
 </nav>
-PHP;
+HTML;
 
 $css = <<<CSS
 * {
