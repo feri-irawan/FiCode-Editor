@@ -347,8 +347,8 @@ function compile(options) {
             :root {
               font-size: `+viewport+`em;
             }` +
-          css.value +
-          `</style>
+            css.value +
+         `</style>
         </head>
         <body>` +
         
