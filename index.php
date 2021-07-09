@@ -190,7 +190,7 @@ JS;
         -->
         <div class="tab-pane hide active" id="css-box">
           <div class="code-editor">
-            <textarea id="css" name="css" class="form-control" placeholder="Write CSS.." value="<?=$css?>"></textarea>
+            <textarea id="css" name="css" class="form-control" placeholder="Write CSS.."><?= $css ?></textarea>
           </div>
         </div>
         <div class="tab-pane hide active" id="js-box">
