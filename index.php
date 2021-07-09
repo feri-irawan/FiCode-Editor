@@ -156,7 +156,14 @@ JS;
  
 <header class="navbar navbar-dark bg-dark mb-3">
   <div class="container">
-    <a href="#" class="navbar-brand">FICODE</a>
+    <div class="row">
+      <div class="col">
+        <a href="#" class="navbar-brand">FICODE</a>
+      </div>
+      <div class="col text-end">
+        <a href="https://saweria.co/feriirawans" class="btn btn-warning">Donate Saweria</a>
+      </div>
+    </div>
   </div>
 </header>
 <section class="container">
