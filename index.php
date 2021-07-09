@@ -336,16 +336,29 @@ function compile(options) {
   
     code.open();
     code.writeln(
+       `<!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <meta http-equiv="X-UA-Compatible" content="ie=edge">
+          <title><?= $webName . " - " . $title ?></title>
+          <style>
+            :root {
+              font-size: `+viewport+`em;
+            }` +
+          css.value +
+          `</style>
+        </head>
+        <body>` +
+        
         html.value +
-        `<style>
-          :root {
-            font-size: `+viewport+`em;
-          }` +
-        css.value +
-        "</style>" +
-        "<script>" +
+        
+        `<script>` +
         js.value +
-        "<"+"/script>"
+        `<`+`/script>
+        </body>
+        </html>`
     );
     code.close();
     
