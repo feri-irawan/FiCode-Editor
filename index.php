@@ -234,6 +234,12 @@ JS;
   </main>
 </section>
 
+<footer class="container-fluid">
+  <div class="container py-3 text-center">
+    &copy; <?= date('Y') ?> with &hearts; by <a href="https://feri-irawan.netlify.app" class="text-decoration-none">Feri Irawan</a>
+  </div>
+</footer>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 // Ini default pada form
