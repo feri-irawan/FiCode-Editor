@@ -1,6 +1,46 @@
 <?php
 $webName = "FICODE";
 $title = "Menghitung Selisih Umur";
+
+$php = <<<PHP
+<nav class="header">
+  <a class="btn-home" href="#">Home</a>
+  <a class="brand" href="#">FERI IRAWAN</a>
+</nav>
+PHP;
+
+$css = <<<CSS
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+.header {
+  background: #ff0088;
+  display: flex;
+  justify-content: space-between;
+}
+.header > a {
+  padding: 1rem;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.header .btn-home {
+  background: #444444;
+  color: #fff;
+  padding-right: 2rem;
+  clip-path: polygon(0 0, 100% 0%, 75% 100%, 0% 100%);
+}
+.header .brand {
+  color: #fff;
+}
+CSS;
+
+$js = <<<JS
+
+JS;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -197,66 +237,9 @@ $title = "Menghitung Selisih Umur";
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 // Ini default pada form
-$("#html").val(`<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <title><?=$title?></title>
-</head>
-<body>
-<div class="container p-3">
-  <h5>Petunjuk Penggunaan</h5>
-  <ol>
-    <li>Tuliskan <b>umur</b> Anda untuk mengetahui tahun berapa Anda lahir.</li>
-    <li>Atau tuliskan <b>tahun</b> lahir Anda untuk mengetahui berapa umur Anda sekarang.</li>
-  </ol>
-  
-  <center>
-    <div class="w-75">
-      <div class="input-group">
-        <!-- <label for="tahun" class="input-group-text">Tahun/Umur</label> -->
-        <input type="number" id="tahun" class="form-control" placeholder="Tulis disini.."/>
-      </div>
-      <div id="hasil" class="mt-3"></div>
-    </div>
-  </center>
-  
-  <a target="_blank" href="https://saweria.co/feriirawans" class="btn btn-success position-fixed end-0 bottom-0">
-    Donasi via Saweria
-  </a>
-</div>
-
-<script>
-var input = document.getElementById("tahun");
-var hasil = document.getElementById("hasil");
-
-input.onkeyup = function (e) {
-  tahunSekarang = new Date().getFullYear();
-  umur = tahunSekarang - input.value;
-
-  if (input.value < 1000) {
-    text = "Anda lahir pada tahun: ";
-  } else {
-    text = "Umur anda saat ini: ";
-  }
-  
-  hasil.innerHTML = '<div class="alert alert-primary">'+ text + umur +'</div>';
-  
-  if (umur < 0) {
-    hasil.innerHTML = '<div class="alert alert-warning">Tahun yang kamu masukan lebih besar dari tahun yang sekarang, yaitu '+ tahunSekarang +'</div>';
-  }
-  if (input.value == 0) {
-    hasil.innerHTML = '<div class="alert alert-danger">Input tidak boleh kosong.</div>'
-  }
-}
-</`+`script>
-</body>
-</html>`)
-$("#css").val()
-$("#js").val()
+//$("#html").val()
+//$("#css").val()
+//$("#js").val()
 
 // Menjalankan fungsi Editor untuk membuat form editor
 Editor("html", "theme", "html");
