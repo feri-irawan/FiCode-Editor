@@ -178,7 +178,7 @@ JS;
       <div class="tab-content">
         <div class="tab-pane show active" id="html-box">
           <div class="code-editor">
-            <textarea id="html" name="html" class="form-control" placeholder="Write HTML.." value="<?=$html?>"></textarea>
+            <textarea id="html" name="html" class="form-control" placeholder="Write HTML.."><?= $html ?></textarea>
           </div>
         </div>
         <!--
