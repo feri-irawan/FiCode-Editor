@@ -195,7 +195,7 @@ JS;
         </div>
         <div class="tab-pane hide active" id="js-box">
           <div class="code-editor">
-            <textarea id="js" name="js" class="form-control" placeholder="Write JavaScript.." value="<?=$js?>"></textarea>
+            <textarea id="js" name="js" class="form-control" placeholder="Write JavaScript.."><?= $js ?></textarea>
           </div>
         </div>
       </div>
