@@ -156,14 +156,8 @@ JS;
  
 <header class="navbar navbar-dark bg-dark mb-3">
   <div class="container">
-    <div class="row justify-content-between">
-      <div class="col">
-        <a href="#">FICODE</a>
-      </div>
-      <div class="col text-end">
-        <a href="https://saweria.co/feriirawans" class="btn btn-warning text-nowrap">Donate Saweria</a>
-      </div>
-    </div>
+    <a href="#" class="navbar-brand">FICODE</a>
+    <a href="https://saweria.co/feriirawans" class="btn btn-warning text-nowrap">Donate Saweria</a>
   </div>
 </header>
 <section class="container">
