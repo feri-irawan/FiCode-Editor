@@ -158,7 +158,7 @@ JS;
   <div class="container">
     <div class="row justify-content-between">
       <div class="col">
-        <a href="#" class="navbar-brand">FICODE</a>
+        <a href="#">FICODE</a>
       </div>
       <div class="col text-end">
         <a href="https://saweria.co/feriirawans" class="btn btn-warning text-nowrap">Donate Saweria</a>
